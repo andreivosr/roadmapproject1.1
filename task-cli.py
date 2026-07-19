@@ -28,13 +28,11 @@ update = subparsers.add_parser('update')
 update.add_argument('id', type=int)
 update.add_argument('description', type=str)
 
+#REMOVE TASK
+remove = subparsers.add_parser('remove')
+remove.add_argument('id', type=int)
+
 args = parser.parse_args()
-
-
-
-#TASKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK
-
-
 
 if args.comando == "add":
     tarefas = carregar_tarefas()
@@ -72,6 +70,20 @@ elif args.comando == "update":
         salvar_tarefas(task_update)
 
         print(f"Tarefa atualizada com sucesso (ID: {id_update})")
+
+elif args.comando == "remove":
+    tarefas = carregar_tarefas()
+    id_remove = args.id
+    task_remove = next((objr for objr in tarefas if objr.get("id") == id_remove), None)
+
+    if task_remove is None:
+        print(f"Tarefa com ID {id_remove} não encontrada")
+
+    else:
+        tarefas.remove(task_remove)
+        salvar_tarefas(tarefas)
+
+        print(f"Tarefa deletada com sucesso (ID: {id_remove})")
 
 
 
