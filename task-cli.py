@@ -37,6 +37,10 @@ markInProgress = subparsers.add_parser('mark-in-progress')
 markInProgress.add_argument('id', type=int)
 
 
+#MARK-DONE
+markDone = subparsers.add_parser('mark-done')
+markDone.add_argument('id', type=int)
+
 args = parser.parse_args()
 
 if args.comando == "add":
@@ -103,6 +107,22 @@ elif args.comando == "mark-in-progress":
         salvar_tarefas(tarefas)
 
         print(f"Tarefa em progresso! (ID: {idMarkInProgress})")
+
+
+elif args.comando == "mark-done":
+    tarefas = carregar_tarefas()
+    idMarkDone = args.id
+    taskMarkDone = next((obj for obj in tarefas if obj.get("id") == idMarkDone), None)
+
+    if taskMarkDone is None:
+        print(f"Tarefa com ID {idMarkDone} não encontrada")
+
+    else:
+        taskMarkDone["status"] = "done"
+        salvar_tarefas(tarefas)
+
+        print(f"Tarefa Concluída com sucesso! (ID: {idMarkDone})")
+
 
 
 

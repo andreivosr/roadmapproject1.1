@@ -2,7 +2,7 @@
   {
     "id": 1,
     "description": "Comprar leite",
-    "status": "in-progress",
+    "status": "done",
     "createdAt": "2026-07-19T10:51:54.269097",
     "updatedAt": "2026-07-19T10:51:54.269097"
   }
