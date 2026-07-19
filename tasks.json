@@ -2,23 +2,16 @@
   {
     "id": 1,
     "description": "Comprar leite",
-    "status": "done",
+    "status": "in-progress",
     "createdAt": "2026-07-19T10:51:54.269097",
-    "updatedAt": "2026-07-19T10:51:54.269097"
+    "updatedAt": "2026-07-19T11:50:04.515781"
   },
   {
     "id": 2,
     "description": "oi",
-    "status": "in-progress",
+    "status": "done",
     "createdAt": "2026-07-19T11:21:22.788941",
-    "updatedAt": "2026-07-19T11:21:22.788941"
-  },
-  {
-    "id": 3,
-    "description": "oi2",
-    "status": "todo",
-    "createdAt": "2026-07-19T11:21:26.711049",
-    "updatedAt": "2026-07-19T11:21:26.711049"
+    "updatedAt": "2026-07-19T11:50:04.653991"
   },
   {
     "id": 4,
@@ -40,5 +33,47 @@
     "status": "in-progress",
     "createdAt": "2026-07-19T11:21:35.767736",
     "updatedAt": "2026-07-19T11:21:35.767736"
+  },
+  {
+    "id": 7,
+    "description": "Tarefa 1",
+    "status": "todo",
+    "createdAt": "2026-07-19T11:49:35.943620",
+    "updatedAt": "2026-07-19T11:49:35.943620"
+  },
+  {
+    "id": 8,
+    "description": "Tarefa 2",
+    "status": "todo",
+    "createdAt": "2026-07-19T11:49:36.095244",
+    "updatedAt": "2026-07-19T11:49:36.095244"
+  },
+  {
+    "id": 9,
+    "description": "Tarefa 3",
+    "status": "todo",
+    "createdAt": "2026-07-19T11:49:36.248643",
+    "updatedAt": "2026-07-19T11:49:36.248643"
+  },
+  {
+    "id": 10,
+    "description": "Tarefa 1",
+    "status": "todo",
+    "createdAt": "2026-07-19T11:50:04.100984",
+    "updatedAt": "2026-07-19T11:50:04.100984"
+  },
+  {
+    "id": 11,
+    "description": "Tarefa 2",
+    "status": "todo",
+    "createdAt": "2026-07-19T11:50:04.238761",
+    "updatedAt": "2026-07-19T11:50:04.238761"
+  },
+  {
+    "id": 12,
+    "description": "Tarefa 3",
+    "status": "todo",
+    "createdAt": "2026-07-19T11:50:04.376146",
+    "updatedAt": "2026-07-19T11:50:04.376146"
   }
 ]

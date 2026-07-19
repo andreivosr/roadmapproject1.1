@@ -43,6 +43,8 @@ markDone.add_argument('id', type=int)
 
 #LIST
 cmdlist = subparsers.add_parser('list')
+cmdlist.add_argument('status', type=str, nargs='?')
+
 
 args = parser.parse_args()
 
@@ -79,7 +81,8 @@ elif args.comando == "update":
         print(f"Tarefa com ID {id_update} não encontrada")
     else:
         task_update["description"] = args.description
-        salvar_tarefas(task_update)
+        task_update["updatedAt"] = datetime.now().isoformat()
+        salvar_tarefas(tarefas)
 
         print(f"Tarefa atualizada com sucesso (ID: {id_update})")
 
@@ -107,6 +110,7 @@ elif args.comando == "mark-in-progress":
 
     else:
         taskMarkInProgress["status"] = "in-progress"
+        taskMarkInProgress["updatedAt"] = datetime.now().isoformat()
         salvar_tarefas(tarefas)
 
         print(f"Tarefa em progresso! (ID: {idMarkInProgress})")
@@ -122,6 +126,7 @@ elif args.comando == "mark-done":
 
     else:
         taskMarkDone["status"] = "done"
+        taskMarkDone["updatedAt"] = datetime.now().isoformat()
         salvar_tarefas(tarefas)
 
         print(f"Tarefa Concluída com sucesso! (ID: {idMarkDone})")
@@ -130,8 +135,21 @@ elif args.comando == "mark-done":
 
 elif args.comando == "list":
     tarefas = carregar_tarefas()
-    for tarefa in tarefas:
-        print(f"{tarefa['id']} - {tarefa['description']} - {tarefa['status']}")
+
+    if args.status is None:
+        for tarefa in tarefas:
+            print(f"{tarefa['id']} - {tarefa['description']} - {tarefa['status']}")
+
+    elif args.status != "done" and args.status != "in-progress" and args.status != "todo":
+        print("digite um status válido")
+
+    else:
+        for tarefa in tarefas:
+            if tarefa["status"] == args.status:
+                print(f"{tarefa['id']} - {tarefa['description']} - {tarefa['status']}")
+
+
+
 
 
 
