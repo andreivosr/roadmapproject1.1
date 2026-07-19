@@ -32,6 +32,11 @@ update.add_argument('description', type=str)
 remove = subparsers.add_parser('remove')
 remove.add_argument('id', type=int)
 
+#MARK-IN-PROGRESS
+markInProgress = subparsers.add_parser('mark-in-progress')
+markInProgress.add_argument('id', type=int)
+
+
 args = parser.parse_args()
 
 if args.comando == "add":
@@ -74,7 +79,7 @@ elif args.comando == "update":
 elif args.comando == "remove":
     tarefas = carregar_tarefas()
     id_remove = args.id
-    task_remove = next((objr for objr in tarefas if objr.get("id") == id_remove), None)
+    task_remove = next((obj for obj in tarefas if obj.get("id") == id_remove), None)
 
     if task_remove is None:
         print(f"Tarefa com ID {id_remove} não encontrada")
@@ -85,6 +90,19 @@ elif args.comando == "remove":
 
         print(f"Tarefa deletada com sucesso (ID: {id_remove})")
 
+elif args.comando == "mark-in-progress":
+    tarefas = carregar_tarefas()
+    idMarkInProgress = args.id
+    taskMarkInProgress = next((obj for obj in tarefas if obj.get("id") == idMarkInProgress), None)
+
+    if taskMarkInProgress is None:
+        print(f"Tarefa com ID {idMarkInProgress} não encontrada")
+
+    else:
+        taskMarkInProgress["status"] = "in-progress"
+        salvar_tarefas(tarefas)
+
+        print(f"Tarefa em progresso! (ID: {idMarkInProgress})")
 
 
 
