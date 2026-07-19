@@ -41,6 +41,9 @@ markInProgress.add_argument('id', type=int)
 markDone = subparsers.add_parser('mark-done')
 markDone.add_argument('id', type=int)
 
+#LIST
+cmdlist = subparsers.add_parser('list')
+
 args = parser.parse_args()
 
 if args.comando == "add":
@@ -122,6 +125,13 @@ elif args.comando == "mark-done":
         salvar_tarefas(tarefas)
 
         print(f"Tarefa Concluída com sucesso! (ID: {idMarkDone})")
+
+
+
+elif args.comando == "list":
+    tarefas = carregar_tarefas()
+    for tarefa in tarefas:
+        print(f"{tarefa['id']} - {tarefa['description']} - {tarefa['status']}")
 
 
 
